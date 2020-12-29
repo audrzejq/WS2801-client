@@ -179,4 +179,43 @@ export class WS2801PiWebServerClient {
 
     return result.brightness;
   }
+
+  public async startAnimation(animationScript: string): Promise<{finishPromise: Promise<void>}> {
+    const body: string = JSON.stringify({animationScript: animationScript});
+
+    const startResponse: FetchResponse = await this.httpClient.post('/led-strip/animation/start', {body: body});
+
+    if (startResponse.status !== 200) {
+      const errorMessage: string = await startResponse.text();
+
+      throw new Error(`Could not start animation: ${errorMessage}`);
+    }
+
+    const finishResponsePromise: Promise<FetchResponse> = this.httpClient.get('/led-strip/animation/finished');
+
+    const finishPromise: Promise<void> = new Promise(async(resolve: Function, reject: Function): Promise<void> => {
+      const finishResponse: FetchResponse = await finishResponsePromise;
+
+      if (finishResponse.status !== 200) {
+        const errorMessage: string = await startResponse.text();
+
+        reject(`Could not wait for animation to finish: ${errorMessage}`);
+        return;
+      }
+
+      resolve();
+    });
+
+    return {finishPromise: finishPromise};
+  }
+
+  public async stopAnimation(): Promise<void> {
+    const response: FetchResponse = await this.httpClient.delete('/led-strip/animation/stop');
+
+    if (response.status !== 200) {
+      const errorMessage: string = await response.text();
+
+      throw new Error(`Could not stop animation: ${errorMessage}`);
+    }
+  }
 }
