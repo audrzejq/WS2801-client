@@ -17,6 +17,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'GET';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -25,6 +26,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'HEAD';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -33,6 +35,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'POST';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -41,6 +44,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'PUT';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -49,6 +53,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'DELETE';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -57,6 +62,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'CONNECT';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -65,6 +71,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'OPTIONS';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -73,6 +80,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'TRACE';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
@@ -81,6 +89,7 @@ export class HttpClient {
     const url: string = this.buildUrl(route);
 
     options.method = 'PATCH';
+    options.headers = {'Content-Type': 'application/json'};
 
     return fetch(url, options);
   }
