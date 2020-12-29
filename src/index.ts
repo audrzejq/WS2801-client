@@ -150,4 +150,33 @@ export class WS2801PiWebServerClient {
     return result.ledStrip;
   }
 
+  public async setBrightness(brightness: number | 'auto'): Promise<LedStrip> {
+    const body: string = JSON.stringify({brightness: brightness});
+
+    const response: FetchResponse = await this.httpClient.post(`/led-strip/brightness/set`, {body: body});
+
+    if (response.status !== 200) {
+      const errorMessage: string = await response.text();
+
+      throw new Error(`Could not set brightness of led strip: ${errorMessage}`);
+    }
+
+    const result: {ledStrip: LedStrip} = await response.json();
+
+    return result.ledStrip;
+  }
+
+  public async getBrightness(): Promise<number | 'auto'> {
+    const response: FetchResponse = await this.httpClient.get(`/led-strip/brightness`);
+
+    if (response.status !== 200) {
+      const errorMessage: string = await response.text();
+
+      throw new Error(`Could not get brightness of led strip: ${errorMessage}`);
+    }
+
+    const result: {brightness: number} = await response.json();
+
+    return result.brightness;
+  }
 }
