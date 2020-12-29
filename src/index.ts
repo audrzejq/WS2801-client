@@ -5,6 +5,8 @@ import {LedColor, LedStrip} from './types/index';
 
 import {HttpClient} from './http-client';
 
+export * from './types/index';
+
 export class WS2801PiWebServerClient {
   public httpClient: HttpClient;
 
