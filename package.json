@@ -1,5 +1,5 @@
 {
-  "name": "ws2801-pi-web-server-client",
+  "name": "ws2801-pi-webserver-client",
   "version": "0.0.0",
   "description": "A client for the web server for the WS2801-Pi module.",
   "main": "dist/index.js",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SteffenKn/WS2801-PI-web-server-client.git"
+    "url": "git+https://github.com/SteffenKn/WS2801-PI-webserver-client.git"
   },
   "keywords": [
     "ws2801",
@@ -25,9 +25,9 @@
   "author": "Steffen Knaup",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SteffenKn/WS2801-PI-web-server-client/issues"
+    "url": "https://github.com/SteffenKn/WS2801-PI-webserver-client/issues"
   },
-  "homepage": "https://github.com/SteffenKn/WS2801-PI-web-server-client#readme",
+  "homepage": "https://github.com/SteffenKn/WS2801-PI-webserver-client#readme",
   "dependencies": {
     "@types/node-fetch": "^2.5.7",
     "md5": "^2.3.0",
