@@ -1,1 +1,1 @@
-# WS2801-PI-webserver-client
+# WS2801-client

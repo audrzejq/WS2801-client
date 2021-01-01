@@ -8,7 +8,7 @@ import {SocketClient} from './socket-client';
 
 export * from './types/index';
 
-export class WS2801PiWebServerClient {
+export class WS2801Client {
   private httpClient: HttpClient;
   private socketClient: SocketClient;
 
