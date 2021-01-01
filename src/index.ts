@@ -4,11 +4,13 @@ import {Response as FetchResponse} from 'node-fetch';
 import {LedColor, LedStrip} from './types/index';
 
 import {HttpClient} from './http-client';
+import {SocketClient} from './socket-client';
 
 export * from './types/index';
 
 export class WS2801PiWebServerClient {
-  public httpClient: HttpClient;
+  private httpClient: HttpClient;
+  private socketClient: SocketClient;
 
   constructor(baseUrl: string, apiKey?: string) {
     if (!baseUrl.startsWith('https://') && !baseUrl.startsWith('http://')) {
@@ -19,6 +21,8 @@ export class WS2801PiWebServerClient {
     }
 
     this.httpClient = new HttpClient(baseUrl, apiKey);
+
+    this.socketClient = new SocketClient(baseUrl);
   }
 
   public setApiKey(apiKey: string): void {
@@ -178,6 +182,18 @@ export class WS2801PiWebServerClient {
     const result: {brightness: number} = await response.json();
 
     return result.brightness;
+  }
+
+  public onLedStripChanged(callback: (ledStrip: LedStrip) => void | Promise<void>): string {
+    return this.socketClient.onLedStripChanged(callback);
+  }
+
+  public onBrightnessChanged(callback: (brightness: number) => void | Promise<void>): string {
+    return this.socketClient.onBrightnessChanged(callback);
+  }
+
+  public removeListener(id: string): void {
+    this.socketClient.removeListener(id);
   }
 
   public async startAnimation(animationScript: string): Promise<{finishPromise: Promise<void>}> {
