@@ -96,8 +96,8 @@ export class WS2801Client {
     return result.ledStrip;
   }
 
-  public async fillLedStrip(color: LedColor): Promise<LedStrip> {
-    const body: string = JSON.stringify({color: color});
+  public async fillLedStrip(color: LedColor, brightness?: number): Promise<LedStrip> {
+    const body: string = brightness ? JSON.stringify({color: color, brightness: brightness}) : JSON.stringify({color: color});
 
     const response: FetchResponse = await this.httpClient.post('/led-strip/fill', {body: body});
 
@@ -126,8 +126,8 @@ export class WS2801Client {
     return result.ledStrip;
   }
 
-  public async setLed(ledIndex: number, color: LedColor): Promise<LedStrip> {
-    const body: string = JSON.stringify({color: color});
+  public async setLed(ledIndex: number, color: LedColor, brightness?: number): Promise<LedStrip> {
+    const body: string = brightness ? JSON.stringify({color: color, brightness: brightness}) : JSON.stringify({color: color});
 
     const response: FetchResponse = await this.httpClient.post(`/led-strip/led/${ledIndex}/set`, {body: body});
 
@@ -142,8 +142,8 @@ export class WS2801Client {
     return result.ledStrip;
   }
 
-  public async setLedstrip(ledStrip: LedStrip): Promise<LedStrip> {
-    const body: string = JSON.stringify({ledStrip: ledStrip});
+  public async setLedstrip(ledStrip: LedStrip, brightness?: number): Promise<LedStrip> {
+    const body: string = brightness ? JSON.stringify({ledStrip: ledStrip, brightness: brightness}) : JSON.stringify({ledStrip: ledStrip});
 
     const response: FetchResponse = await this.httpClient.post(`/led-strip/set`, {body: body});
 
