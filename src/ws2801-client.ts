@@ -140,7 +140,7 @@ export class WS2801Client {
     return result.ledStrip;
   }
 
-  public async setLedstrip(ledStrip: LedStrip, brightness?: number): Promise<LedStrip> {
+  public async setLedStrip(ledStrip: LedStrip, brightness?: number): Promise<LedStrip> {
     const body: string = brightness ? JSON.stringify({ledStrip: ledStrip, brightness: brightness}) : JSON.stringify({ledStrip: ledStrip});
 
     const response: FetchResponse = await this.httpClient.post(`/led-strip/set`, {body: body});
