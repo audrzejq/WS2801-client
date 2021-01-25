@@ -1,6 +1,6 @@
 {
   "name": "ws2801-client",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "A client for the webserver for the WS2801-Pi module.",
   "main": "dist/index.js",
   "scripts": {
