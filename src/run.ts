@@ -1,6 +1,6 @@
 import {LedColor, WS2801Client} from './index';
 
-const client: WS2801Client = new WS2801Client('http://192.168.1:45451');
+const client: WS2801Client = new WS2801Client('http://192.168.1.21:45451');
 
 async function register(): Promise<void> {
   if (!(await client.loginRequired())) {

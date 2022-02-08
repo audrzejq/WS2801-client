@@ -2,11 +2,11 @@
   "name": "ws2801-client",
   "version": "1.0.0",
   "description": "A client for the webserver for the WS2801-Pi module.",
-  "main": "dist/index.js",
+  "main": "dist/run.js",
   "scripts": {
     "build": "tsc",
     "lint": "tslint --project .",
-    "start": "node dist/index.js",
+    "start": "node dist/run.js",
     "test": "c8 mocha dist/tests/*.js --timeout 15000 --exit",
     "test:coverage": "npm run test:coverage-check && npm run test:coverage-report",
     "test:coverage-check": "c8 check-coverage --lines 70 --functions 70 --branches 70",
