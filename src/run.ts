@@ -160,11 +160,12 @@ async function run(): Promise<void> {
 //   // }
 // // }
 
-  var z;
-  for (z=0; z<30; z++) {
-  await acidCloud();
+  // var z;
+  // for (z=0; z<30; z++) {
+  // await acidCloud();
   
-  }
+  // }
+  client.clearLedStrip();
 }
 run();
 
